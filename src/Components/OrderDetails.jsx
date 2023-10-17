@@ -1,12 +1,16 @@
-'use client';
-
 import CustomTable from "./Table/CustomTable";
 import { rowsObject } from '../constants'
 import { useMemo } from "react";
+import Photo1 from '../icons/27022519889f16e1275b4e0f96f434b8.jpeg'
+import Photo2 from '../icons/628d9abe1d64b9cd528c434381eba87f.jpeg'
+import { Box, Text } from "@chakra-ui/react";
+import { Image } from '@chakra-ui/react'
+
 
 export default function OrderDetails() {
     const columnsData = useMemo(() => [
-        { label: 'productame', name: 'Product Name' }, { label: 'source', name: 'Stock' },
+        { label: 'timeStamp', name: 'Product Name', cellRenderer: ProductDetail },
+        { label: 'source', name: 'Stock' },
         { label: 'status', name: 'Price', cellRenderer: StatusRenderer }, { label: 'select', name: 'Total Sales', cellRenderer: CustomSelect }
     ], []);
 
@@ -17,6 +21,20 @@ export default function OrderDetails() {
     function StatusRenderer(value) {
         const backgroundColor = value[1] === 'failed' ? 'bg-red-200' : value[1] === 'waiting' ? 'bg-yellow-100' : 'bg-green-200';
         return <div className={`flex items-center p-1 capitalize text-gray-800 font-medium text-sm rounded-lg justify-center min-w-[60px] ${backgroundColor}`}>{value[1]}</div>;
+    }
+
+    function ProductDetail(value) {
+        console.log("🚀 ~ file: OrderDetails.jsx:27 ~ ProductDetail ~ value:", value[1][1])
+        return <Box className="flex gap-2 items-center">
+            <Image
+                maxW={'160px'}                
+                src={value[1][1] === 'a' ? Photo1 : Photo2}
+                alt='Dan Abramov'
+                rounded={'2xl'}
+                aspectRatio={'16/9'}
+            />
+            <Text fontSize={'24px'}>{value[1]}</Text>
+        </Box>
     }
 
     return (
