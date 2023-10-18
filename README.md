@@ -1,3 +1,5 @@
+![image](https://github.com/Lokeshwar-V/Dashboard-UI-main/assets/76156643/5af876b7-e6a4-4f54-82cd-7b2a98fa18ba)
+This is a Responsive dashboard UI made with Chakra UI and React.js
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
